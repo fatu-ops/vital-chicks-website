@@ -36,5 +36,21 @@ document.addEventListener("DOMContentLoaded", () => {
     
     lastScroll = currentScroll;
   });
+
+  // 4) Video Hero Shrink Effect on Scroll
+  const videoHeroWrapper = document.querySelector(".video-hero-wrapper");
+  
+  if (videoHeroWrapper) {
+    window.addEventListener("scroll", () => {
+      const scrollY = window.pageYOffset;
+      const triggerPoint = window.innerHeight * 0.3; // Trigger at 30% scroll
+      
+      if (scrollY > triggerPoint) {
+        videoHeroWrapper.classList.add("shrink");
+      } else {
+        videoHeroWrapper.classList.remove("shrink");
+      }
+    });
+  }
 });
 

@@ -32,20 +32,35 @@
     </div>
   </nav>
 
-  <header class="hero">
-    <div class="container hero-inner">
-      <div class="reveal">
-        <h1>Animal Feed Manufacturing. Designed for Results.</h1>
-        <p>
-          Feed production for poultry, livestock, and aquaculture, supplied locally and internationally.
-        </p>
-        <p>
-          Vital Chicks & Feeds manufactures animal feed for poultry, livestock, aquaculture, and specialty animals.
-          We support farms, distributors, and export buyers with feed designed for quality performance across different production environments.
-        </p>
+  <!-- Full-Screen Video Hero -->
+  <section class="video-hero-section">
+    <div class="video-hero-wrapper">
+      <video 
+        class="video-hero"
+        autoplay 
+        muted 
+        loop 
+        playsinline
+      >
+        <source src="home-video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      
+      <!-- Hero Text Overlay -->
+      <div class="video-hero-overlay">
+        <div class="container">
+          <div class="video-hero-content">
+            <img src="logo.png" alt="Vital Chicks & Feeds logo" class="hero-logo" />
+            <h1>Vital Chicks & Feeds</h1>
+            <p class="hero-subtitle">Animal Feed Manufacturing: Designed for Results.</p>
+          </div>
+        </div>
       </div>
+    </div>
 
-      <aside class="what-we-do-card reveal">
+    <!-- What We Do Card - Overlaying Bottom of Video -->
+    <div class="container">
+      <aside class="what-we-do-card-hero">
         <h3>What We Do</h3>
         <p>We specialize in manufacturing premium animal feed for diverse livestock and aquaculture needs.</p>
         <ul>
@@ -57,29 +72,6 @@
           <a class="text-link" href="products.html">Explore Our Products →</a>
         </div>
       </aside>
-    </div>
-  </header>
-
-  <!-- Manufacturing Excellence Video Section -->
-  <section class="video-section">
-    <div class="container">
-      <div class="text-center mb-lg reveal">
-        <h2>Manufacturing Excellence</h2>
-        <p class="meta">See our state-of-the-art production facilities in action</p>
-      </div>
-      
-      <div class="video-container reveal">
-        <video 
-          autoplay 
-          muted 
-          loop 
-          playsinline
-          poster=""
-        >
-          <source src="home-video.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
     </div>
   </section>
 
