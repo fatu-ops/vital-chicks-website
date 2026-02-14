@@ -1,0 +1,675 @@
+/* =========================================================
+   ABOUT PAGE — Heritage + Interactive Timeline
+========================================================= */
+
+:root{
+  --ink: #0b0f0c;
+  --muted: rgba(11, 15, 12, 0.72);
+  --line: rgba(11, 15, 12, 0.14);
+
+  --green: #1f8a4c;
+  --green-2: #0f5e33;
+
+  --paper: rgba(255,255,255,0.88);
+  --wash: rgba(31,138,76,0.10);
+
+  --ease: cubic-bezier(.2,.9,.2,1);
+  --shadow: 0 18px 45px rgba(0,0,0,0.10);
+}
+
+
+body.page-about{
+  background:
+    radial-gradient(900px 420px at 20% 5%, var(--wash), transparent 62%),
+    radial-gradient(900px 460px at 85% 0%, rgba(31,138,76,0.08), transparent 55%),
+    #fff;
+}
+
+/* HERO */
+.about-hero{
+  position: relative;
+  padding: 92px 0 66px;
+  overflow:hidden;
+}
+
+.about-hero::before{
+  content:"";
+  position:absolute;
+  inset:-80px -80px auto -80px;
+  height: 480px;
+  background:
+    radial-gradient(720px 340px at 18% 28%, rgba(31,138,76,0.22), transparent 62%),
+    radial-gradient(560px 260px at 82% 18%, rgba(0,0,0,0.06), transparent 62%);
+  pointer-events:none;
+}
+
+.about-hero-center{
+  position: relative;
+  text-align: center;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.about-kicker{
+  display:inline-flex;
+  align-items:center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(11,15,12,0.14);
+  background: rgba(255,255,255,0.55);
+  font-size: 13px;
+  font-weight: 750;
+  color: rgba(11,15,12,0.82);
+}
+
+.about-brand{
+  margin-top: 14px;
+  font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+  font-weight: 900;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+  font-size: clamp(42px, 5vw, 72px);
+}
+
+.about-subtitle{
+  margin: 14px auto 0;
+  color: var(--muted);
+  font-size: 16px;
+  max-width: 72ch;
+}
+
+.about-actions{
+  display:flex;
+  justify-content:center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.about-scrollhint{
+  margin-top: 18px;
+}
+
+.about-scrolllink{
+  display:inline-flex;
+  align-items:center;
+  gap: 8px;
+  font-weight: 800;
+  color: rgba(15,94,51,0.92);
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(31,138,76,0.22);
+  background: rgba(31,138,76,0.08);
+  transition: transform .2s var(--ease);
+}
+
+.about-scrolllink:hover{
+  transform: translateY(-1px);
+}
+
+/* MAIN */
+.about-main{ padding-bottom: 10px; }
+
+.about-section{
+  padding: 58px 0 74px;
+}
+
+.about-h2{
+  letter-spacing: -0.02em;
+  margin: 0 0 10px;
+}
+
+.about-lead{
+  margin: 0 0 16px;
+  color: var(--muted);
+  max-width: 85ch;
+}
+
+/* STEPPER */
+.timeline-stepper{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 16px;
+}
+
+@media (max-width: 900px){
+  .timeline-stepper{ grid-template-columns: 1fr; }
+}
+
+.tstep{
+  text-align:left;
+  border: 1px solid rgba(11,15,12,0.12);
+  background: rgba(255,255,255,0.75);
+  border-radius: 16px;
+  padding: 12px 12px;
+  cursor: pointer;
+  transition: transform .2s var(--ease), border-color .2s var(--ease), background .2s var(--ease), box-shadow .2s var(--ease);
+}
+
+.tstep:hover{
+  transform: translateY(-2px);
+  border-color: rgba(31,138,76,0.26);
+  background: rgba(31,138,76,0.08);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.07);
+}
+
+.tstep.is-active{
+  border-color: rgba(31,138,76,0.35);
+  background: linear-gradient(135deg, rgba(31,138,76,0.16), rgba(255,255,255,0.72));
+}
+
+.tstep-year{
+  display:block;
+  font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.tstep-label{
+  display:block;
+  margin-top: 2px;
+  color: rgba(11,15,12,0.70);
+  font-weight: 750;
+  font-size: 13px;
+}
+
+/* TIMELINE SHELL */
+.timeline-shell{
+  position: relative;
+  margin-top: 18px;
+  border-radius: 22px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.78);
+  padding: 18px;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.02);
+}
+
+.timeline-rail{
+  position:absolute;
+  left: 32px;
+  top: 22px;
+  bottom: 22px;
+  width: 2px;
+  background: rgba(11,15,12,0.12);
+  border-radius: 2px;
+}
+
+/* ACCORDION ITEMS */
+.titem{
+  position: relative;
+  margin: 10px 0;
+  padding-left: 54px;
+  border-radius: 18px;
+  transition: background .25s var(--ease), box-shadow .25s var(--ease);
+}
+
+.titem[open]{
+  background: linear-gradient(135deg, rgba(31,138,76,0.14), transparent 60%);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+
+.tsum{
+  list-style:none;
+  cursor:pointer;
+  padding: 14px 12px;
+  border-radius: 18px;
+  border: 1px solid rgba(11,15,12,0.12);
+  background: rgba(255,255,255,0.82);
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 12px;
+  transition: transform .2s var(--ease), border-color .2s var(--ease);
+}
+
+.tsum:hover{
+  transform: translateY(-1px);
+  border-color: rgba(31,138,76,0.26);
+}
+
+.titem[open] .tsum{
+  border-color: rgba(31,138,76,0.34);
+}
+
+.tsum::-webkit-details-marker{ display:none; }
+
+.tdot{
+  position:absolute;
+  left: 25px;
+  top: 22px;
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: rgba(31,138,76,0.90);
+  box-shadow: 0 0 0 7px rgba(31,138,76,0.12);
+}
+
+.tsum-meta{
+  display:flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tyear{
+  font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: rgba(11,15,12,0.92);
+}
+
+.tname{
+  font-weight: 850;
+  letter-spacing: -0.02em;
+  color: rgba(11,15,12,0.90);
+}
+
+.ticon{
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  border: 1px solid rgba(11,15,12,0.14);
+  background: rgba(255,255,255,0.65);
+  display:grid;
+  place-items:center;
+  flex: 0 0 auto;
+  position: relative;
+}
+
+.ticon::before{
+  content:"+";
+  font-weight: 900;
+  color: rgba(31,138,76,0.90);
+}
+
+.titem[open] .ticon::before{
+  content:"—";
+}
+
+.tpanel{
+  padding: 6px 12px 14px;
+  color: var(--muted);
+}
+
+.tpanel p{ color: var(--muted); }
+
+.tpanel-actions{
+  display:flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+/* FEATURE BAND (dark green behind) */
+.about-feature{
+  padding: 68px 0;
+  background:
+    radial-gradient(800px 360px at 18% 20%, rgba(255,255,255,0.10), transparent 60%),
+    linear-gradient(135deg, rgba(15,94,51,1), rgba(8,44,24,1));
+}
+
+.feature-card{
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.06);
+  box-shadow: var(--shadow);
+  padding: 26px;
+}
+
+.feature-title{
+  margin: 0 0 10px;
+  color: rgba(255,255,255,0.96);
+  font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+}
+
+.feature-text{
+  color: rgba(255,255,255,0.82);
+  max-width: 90ch;
+}
+
+.feature-actions{
+  display:flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+/* Make buttons readable on dark background */
+.page-about .about-feature .btn{
+  border-color: rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.10);
+  color: rgba(255,255,255,0.94);
+}
+
+.page-about .about-feature .btn:hover{
+  background: rgba(255,255,255,0.16);
+}
+
+.page-about .about-feature .btn--primary{
+  background: linear-gradient(135deg, rgba(255,255,255,0.18), rgba(255,255,255,0.06));
+}
+
+/* =========================
+   Timeline Split (Premium)
+========================= */
+
+.timeline-split{
+  display:grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 22px;
+  margin-top: 18px;
+}
+
+@media (max-width: 900px){
+  .timeline-split{ grid-template-columns: 1fr; }
+}
+
+.timeline-left{
+  position: relative;
+  padding: 6px 0;
+  border-top: 1px solid rgba(11,15,12,0.10);
+  border-bottom: 1px solid rgba(11,15,12,0.10);
+}
+
+.milestone{
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  padding: 16px 10px 16px 18px;
+  cursor: pointer;
+  display: grid;
+  gap: 6px;
+  position: relative;
+  transition: transform .18s var(--ease);
+}
+
+.milestone:hover{
+  transform: translateY(-1px);
+}
+
+.milestone::before{
+  content:"";
+  position:absolute;
+  left: 2px;
+  top: 16px;
+  bottom: 16px;
+  width: 3px;
+  border-radius: 3px;
+  background: transparent;
+  transition: background .2s var(--ease);
+}
+
+.milestone.is-active::before{
+  background: rgba(31,138,76,0.85);
+  box-shadow: 0 0 0 6px rgba(31,138,76,0.10);
+}
+
+.m-year{
+  font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: rgba(11,15,12,0.88);
+}
+
+.m-title{
+  font-weight: 850;
+  letter-spacing: -0.02em;
+  color: rgba(11,15,12,0.72);
+}
+
+.milestone.is-active .m-title{
+  color: rgba(11,15,12,0.92);
+}
+
+.timeline-right .tpanel{
+  border-radius: 22px;
+  border: 1px solid rgba(11,15,12,0.12);
+  background: rgba(255,255,255,0.84);
+  box-shadow: 0 18px 45px rgba(0,0,0,0.08);
+  padding: 22px;
+  min-height: 260px;
+}
+
+.tpanel-top{
+  margin-bottom: 10px;
+}
+
+.tpanel-year{
+  font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  font-size: 18px;
+  color: rgba(11,15,12,0.86);
+}
+
+.tpanel-heading{
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  font-size: 22px;
+  margin-top: 6px;
+}
+
+.tpanel-body p{
+  color: rgba(11,15,12,0.72);
+}
+
+.tpanel-actions{
+  display:flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+/* Panel swap animation hooks */
+.tpanel.is-swapping{
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity .22s var(--ease), transform .22s var(--ease);
+}
+
+.tpanel.is-ready{
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity .38s var(--ease), transform .38s var(--ease);
+}
+
+/* =========================
+   Long Alternating Timeline
+========================= */
+
+.timeline-long{
+  position: relative;
+  margin-top: 18px;
+  padding: 12px 0;
+}
+
+.timeline-long::before{
+  content:"";
+  position:absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(11,15,12,0.10);
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.tlong-item{
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  margin: 28px 0;
+}
+
+.tlong-item.left .tlong-card{ grid-column: 1 / 2; }
+.tlong-item.right .tlong-card{ grid-column: 2 / 3; }
+
+.tlong-marker{
+  position:absolute;
+  left: 50%;
+  top: 26px;
+  width: 14px;
+  height: 14px;
+  background: rgba(31,138,76,0.92);
+  border-radius: 999px;
+  transform: translateX(-50%);
+  box-shadow: 0 0 0 8px rgba(31,138,76,0.10);
+}
+
+.tlong-card{
+  border-radius: 22px;
+  border: 1px solid rgba(11,15,12,0.12);
+  background: rgba(255,255,255,0.84);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.07);
+  padding: 20px;
+  max-width: 520px;
+}
+
+.tlong-item.left .tlong-card{ justify-self: end; margin-right: 28px; }
+.tlong-item.right .tlong-card{ justify-self: start; margin-left: 28px; }
+
+.tlong-top{
+  margin-bottom: 10px;
+}
+
+.tlong-year{
+  font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: rgba(11,15,12,0.86);
+}
+
+.tlong-title{
+  margin-top: 6px;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  font-size: 22px;
+}
+
+.tlong-image{
+  margin-top: 14px;
+  border-radius: 18px;
+  border: 1px solid rgba(11,15,12,0.10);
+  background: rgba(31,138,76,0.06);
+  overflow: hidden;
+}
+
+.timg-ph{
+  padding: 48px 14px;
+  text-align: center;
+  color: rgba(11,15,12,0.60);
+  font-weight: 800;
+}
+
+/* Mobile: stack */
+@media (max-width: 900px){
+  .timeline-long::before{
+    left: 10px;
+    transform: none;
+  }
+
+  .tlong-item{
+    grid-template-columns: 1fr;
+    padding-left: 24px;
+  }
+
+  .tlong-marker{
+    left: 10px;
+    transform: none;
+  }
+
+  .tlong-card{
+    max-width: none;
+    margin: 0;
+    justify-self: stretch !important;
+  }
+
+  .tlong-item.left .tlong-card,
+  .tlong-item.right .tlong-card{
+    margin: 0;
+  }
+}
+
+/* =========================================================
+   TIMELINE INTERACTION — HOVER INVERT ONLY
+   - Hover = dark green background + white text
+   - is-active (scroll) = subtle border/shadow only
+========================================================= */
+
+/* Smooth motion */
+.tlong-card{
+  transition:
+    background .35s var(--ease),
+    box-shadow .35s var(--ease),
+    border-color .35s var(--ease),
+    transform .35s var(--ease);
+}
+
+/* Scroll active: subtle emphasis (NO color invert) */
+.tlong-item.is-active .tlong-card{
+  border-color: rgba(31,138,76,0.35);
+  box-shadow: 0 18px 50px rgba(0,0,0,0.10);
+}
+
+/* Hover: full invert */
+.tlong-item:hover .tlong-card{
+  background: var(--bg-dark, var(--green-2));
+  border-color: rgba(255,255,255,0.28);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.22);
+  transform: translateY(-2px);
+}
+
+/* Force all text to white ONLY on hover */
+.tlong-item:hover .tlong-card,
+.tlong-item:hover .tlong-card h1,
+.tlong-item:hover .tlong-card h2,
+.tlong-item:hover .tlong-card h3,
+.tlong-item:hover .tlong-card h4,
+.tlong-item:hover .tlong-card p,
+.tlong-item:hover .tlong-card ul,
+.tlong-item:hover .tlong-card li,
+.tlong-item:hover .tlong-card strong,
+.tlong-item:hover .tlong-card em,
+.tlong-item:hover .tlong-card span,
+.tlong-item:hover .tlong-card .tlong-year,
+.tlong-item:hover .tlong-card .tlong-title{
+  color: var(--text-on-dark, #ffffff) !important;
+}
+
+/* Image area adapts ONLY on hover */
+.tlong-item:hover .tlong-image{
+  border-color: rgba(255,255,255,0.30);
+  background: rgba(255,255,255,0.08);
+}
+
+/* Cursor cue */
+.tlong-card{ cursor: default; }
+.tlong-item:hover .tlong-card{ cursor: pointer; }
+
+/* =========================
+   Timeline Image Reveal
+========================= */
+
+/* Initial (hidden but reserved space) */
+.tlong-image{
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity .6s var(--ease),
+    transform .6s var(--ease);
+  will-change: opacity, transform;
+}
+
+/* When JS adds .is-visible */
+.tlong-image.is-visible{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+

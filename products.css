@@ -1,0 +1,467 @@
+/* =========================================================
+   PRODUCTS — Premium dark cards, clean grid, no bubble vibes
+========================================================= */
+
+:root{
+  --p-wash: rgba(31,138,76,0.10);
+  --p-accent: #062615;           /* deeper premium green */
+  --p-accent-2: #08301F;
+  --p-ink: rgba(11,74,42,0.92);
+}
+
+/* Background wash (About vibe) */
+body.page-products{
+  background:
+    radial-gradient(900px 420px at 20% 5%, var(--p-wash), transparent 62%),
+    radial-gradient(900px 460px at 85% 0%, rgba(31,138,76,0.08), transparent 55%),
+    #fff;
+}
+
+/* Progress bar */
+.nav-progress{
+  height: 2px;
+  width: 100%;
+  background: rgba(11,74,42,0.06);
+}
+.nav-progress__bar{
+  height: 100%;
+  width: var(--scroll-progress, 0%);
+  background: rgba(6,38,21,0.75);
+}
+
+/* HERO */
+.products-hero{
+  position: relative;
+  padding: 92px 0 34px;
+  overflow: hidden;
+}
+
+.products-hero::before{
+  content:"";
+  position:absolute;
+  inset:-80px -80px auto -80px;
+  height: 500px;
+  background:
+    radial-gradient(720px 340px at 18% 28%, rgba(31,138,76,0.22), transparent 62%),
+    radial-gradient(560px 260px at 82% 18%, rgba(0,0,0,0.06), transparent 62%);
+  pointer-events:none;
+}
+
+.products-hero-center{
+  position: relative;
+  text-align: center;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.products-eyebrow{
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(11, 74, 42, 0.72);
+}
+
+.products-brand{
+  margin-top: 14px;
+  font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+  font-weight: 900;
+  letter-spacing: -0.035em;
+  font-size: clamp(38px, 4.6vw, 64px);
+  line-height: 1.02;
+}
+
+.products-subtitle{
+  margin: 16px auto 0;
+  max-width: 84ch;
+  color: var(--text-muted);
+  line-height: 1.75;
+}
+
+/* Tools (reduce bubble feel: less radius + flatter) */
+.products-tools{
+  margin: 22px auto 0;
+  max-width: 820px;
+  display: grid;
+  gap: 10px;
+}
+
+.products-search input{
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 10px;                 /* less bubbly */
+  border: 1px solid rgba(11,74,42,0.18);
+  background: rgba(255,255,255,0.82);
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color .18s var(--ease), box-shadow .18s var(--ease), background .18s var(--ease);
+}
+
+.products-search input:focus{
+  border-color: rgba(6,38,21,0.55);
+  background: rgba(255,255,255,0.95);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+
+.products-hint{
+  font-size: 13px;
+  color: rgba(11,74,42,0.70);
+}
+
+/* Main */
+.products-main{
+  padding-bottom: 78px;
+}
+
+.products-grid-wrap{
+  padding: 16px 0 0;
+}
+
+/* ✅ Even, clean grid (auto-fit makes it balanced) */
+.products-grid{
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  align-items: stretch;
+}
+
+/* CARD — less rounded, darker, premium */
+.pcard{
+  position: relative;
+  border-radius: 14px;               /* less bubbly */
+  border: 1px solid rgba(11,74,42,0.10);
+  background: rgba(255,255,255,0.90);
+  padding: 18px 18px 16px;
+  overflow: clip;
+  transform: translateZ(0);
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;                 /* makes them feel uniform */
+  transition: transform .22s var(--ease), box-shadow .22s var(--ease), border-color .22s var(--ease);
+}
+
+/* Dark cards */
+.pcard--dark{
+  background: linear-gradient(180deg, var(--p-accent), var(--p-accent-2));
+  border-color: rgba(255,255,255,0.10);
+  color: rgba(255,255,255,0.92);
+}
+
+/* Slightly “special” custom card, but still same size/position */
+.pcard--accent{
+  background: linear-gradient(180deg, #052113, #0A3B26);
+}
+
+/* Subtle shine + cursor glow (not bubbly) */
+.pcard::before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border-radius: 14px;
+  background:
+    radial-gradient(
+      280px 220px at var(--mx, 50%) var(--my, 30%),
+      rgba(255,255,255,0.16),
+      transparent 60%
+    );
+  opacity: 0;
+  transition: opacity .22s var(--ease);
+  pointer-events:none;
+}
+
+.pcard::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.12), transparent 55%);
+  opacity: 0.85;
+  pointer-events:none;
+}
+
+.pcard:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 18px 46px rgba(0,0,0,0.10);
+  border-color: rgba(255,255,255,0.16);
+}
+.pcard:hover::before{ opacity: 1; }
+
+.pcard:focus-visible{
+  outline: 3px solid rgba(31,138,76,0.35);
+  outline-offset: 3px;
+}
+
+/* ✅ Distinct “hero line” inside each card */
+.pcard-hero{
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.14);
+}
+
+.pcard-kicker{
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.70);
+  margin-bottom: 8px;
+}
+
+/* ✅ Use same serif as Vital Chicks heading */
+.pcard-title{
+  margin: 0;
+  font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  font-size: 22px;
+  line-height: 1.12;
+}
+
+.pcard-sub{
+  font-size: 13px;
+  font-weight: 800;
+  color: rgba(255,255,255,0.72);
+  margin-top: 6px;
+}
+
+/* Body text */
+.pcard-desc{
+  margin: 0 0 12px;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.86);
+}
+
+.pcard-meta{
+  margin-top: auto; /* pushes meta + CTA toward bottom = consistent cards */
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.78);
+}
+
+.pcard-meta-label{
+  font-weight: 900;
+  color: rgba(255,255,255,0.86);
+}
+
+.pcard-cta{
+  margin-top: 14px;
+  font-weight: 900;
+  color: rgba(255,255,255,0.92);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Contact block — reduce bubble feel */
+.products-contact{
+  margin-top: 18px;
+  border: 1px solid rgba(11,74,42,0.12);
+  border-radius: 14px;
+  background: rgba(11,74,42,0.03);
+  padding: 18px 18px;
+}
+
+.products-contact-title{
+  margin: 0 0 6px;
+  font-size: 18px;
+}
+.products-link{
+  font-weight: 900;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.products-empty{
+  margin-top: 14px;
+  font-weight: 800;
+  color: rgba(11,74,42,0.78);
+}
+
+/* Reveal */
+.page-products .reveal{
+  opacity: 0;
+  transform: translateY(8px);
+  filter: blur(3px);
+  transition: opacity .65s var(--ease), transform .65s var(--ease), filter .65s var(--ease);
+}
+.page-products .reveal.is-visible{
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* Accessibility helper */
+.sr-only{
+  position:absolute;
+  width:1px;
+  height:1px;
+  padding:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  border:0;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior: auto; }
+  .page-products .reveal,
+  .page-products .reveal.is-visible{
+    transition: none !important;
+    transform: none !important;
+    filter: none !important;
+    opacity: 1 !important;
+  }
+  .pcard,
+  .pcard:hover{
+    transition: none !important;
+    transform: none !important;
+  }
+}
+/* ============================
+   PATCH: improve readability + even grid + remove bubble feel
+   Paste at END of products.css
+============================ */
+
+/* Grid: 3 cards top row, 2 wider bottom row */
+.products-grid{
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(12, 1fr);
+  align-items: stretch;
+}
+
+/* Default card spans 4 columns (3 per row) */
+.pcard{
+  grid-column: span 4;
+}
+
+/* Wide card spans 6 columns (2 per row) */
+.pcard--wide{
+  grid-column: span 6;
+}
+
+/* Responsive */
+@media (max-width: 980px){
+  .pcard{ grid-column: span 6; }        /* 2 per row */
+  .pcard--wide{ grid-column: span 12; } /* wide becomes full width */
+}
+@media (max-width: 640px){
+  .pcard{ grid-column: span 12; }       /* 1 per row */
+}
+
+/* White heading band for contrast on dark cards */
+.pcard-hero{
+  margin: -18px -18px 14px;      /* extend to edges */
+  padding: 16px 18px 14px;
+  background: rgba(255,255,255,0.96);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+/* Serif titles like the main Vital Chicks heading */
+.pcard-title{
+  margin: 0;
+  font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  font-size: 22px;
+  line-height: 1.12;
+  color: rgba(11,74,42,0.96);
+}
+
+.pcard-sub{
+  font-size: 13px;
+  font-weight: 800;
+  color: rgba(11,74,42,0.70);
+  margin-top: 6px;
+}
+
+/* Keep body readable on dark background */
+.pcard-desc{
+  margin: 0 0 12px;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.88);
+}
+
+.pcard-meta{
+  margin-top: auto;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.82);
+}
+.pcard-meta-label{
+  font-weight: 900;
+  color: rgba(255,255,255,0.92);
+}
+
+/* CTA: not a button — only underline on hover */
+.pcard-cta{
+  margin-top: 14px;
+  font-weight: 900;
+  color: rgba(255,255,255,0.92);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  opacity: 0.92;
+}
+.pcard:hover .pcard-cta{
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+/* Premium CTA block (no buttons/bubbles) */
+.products-contact{
+  margin-top: 18px;
+  border: 1px solid rgba(11,74,42,0.14);
+  border-radius: 14px;
+  background:
+    radial-gradient(420px 180px at 18% 20%, rgba(31,138,76,0.14), transparent 60%),
+    rgba(11,74,42,0.03);
+  padding: 18px 18px;
+}
+
+.products-contact-top{
+  display: grid;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.products-contact-title{
+  margin: 0;
+  font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.products-contact-sub{
+  color: rgba(11,74,42,0.72);
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.products-contact-actions{
+  display: grid;
+  gap: 8px;
+}
+
+.plink{
+  display: block;
+  padding: 12px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(11,74,42,0.12);
+  background: rgba(255,255,255,0.84);
+  color: rgba(11,74,42,0.92);
+  font-weight: 900;
+  text-decoration: none;
+  transition: transform .18s var(--ease), border-color .18s var(--ease), background .18s var(--ease);
+}
+
+.plink:hover{
+  transform: translateY(-1px);
+  border-color: rgba(31,138,76,0.28);
+  background: rgba(255,255,255,0.94);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.plink:focus-visible{
+  outline: 3px solid rgba(31,138,76,0.35);
+  outline-offset: 3px;
+}
