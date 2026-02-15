@@ -2,12 +2,13 @@
    THEME TOKENS - PREMIUM TECH AESTHETIC
 ========================= */
 :root{
-  /* Brand colors - Deep obsidian and forest green */
+  /* Brand colors - Deep obsidian and glow-enhanced emerald green */
   --obsidian: #0A0A0A;
   --obsidian-light: #1a1a1a;
-  --green-vibrant: #1B4332;
-  --green-glow: rgba(27, 67, 50, 0.4);
-  --green-subtle: rgba(27, 67, 50, 0.2);
+  --green-vibrant: #10B981;
+  --green-glow: rgba(16, 185, 129, 0.6);
+  --green-subtle: rgba(16, 185, 129, 0.2);
+  --green-hover-tint: rgba(16, 185, 129, 0.12);
 
   /* Text system */
   --text-primary: #ffffff;
@@ -68,7 +69,7 @@ body{
   overflow-x: hidden;
 }
 
-/* Ambient Light Leaks - Forest Green Glow */
+/* Ambient Light Leaks - Emerald Green Glow */
 body::before{
   content: "";
   position: fixed;
@@ -76,7 +77,7 @@ body::before{
   left: 5%;
   width: 1000px;
   height: 1000px;
-  background: radial-gradient(circle, rgba(27, 67, 50, 0.08), transparent 60%);
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.08), transparent 60%);
   border-radius: 50%;
   filter: blur(150px);
   pointer-events: none;
@@ -91,7 +92,7 @@ body::after{
   right: 10%;
   width: 800px;
   height: 800px;
-  background: radial-gradient(circle, rgba(27, 67, 50, 0.06), transparent 60%);
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.06), transparent 60%);
   border-radius: 50%;
   filter: blur(120px);
   pointer-events: none;
@@ -158,6 +159,7 @@ h1{
 h2{
   font-size: clamp(2rem, 4vw, 3rem);
   line-height: 1.2;
+  filter: drop-shadow(0 0 12px var(--green-glow));
 }
 
 h3{
@@ -206,8 +208,8 @@ h3{
 
 @media (max-width: 900px){
   .grid-2, .grid-3, .grid-4{ grid-template-columns:1fr; }
-  .section{ padding: 70px 0; }
-  .section--tight{ padding: 60px 0; }
+  .section{ padding: 60px 0; }
+  .section--tight{ padding: 50px 0; }
 }
 
 /* =========================
@@ -254,6 +256,8 @@ h3{
   width: auto;
   object-fit: contain;
   filter: drop-shadow(0 0 10px var(--green-glow));
+  mix-blend-mode: multiply;
+  filter: contrast(110%) brightness(110%) drop-shadow(0 0 10px var(--green-glow));
 }
 
 .brand-name{
@@ -366,7 +370,7 @@ h3{
 
 .btn:hover{
   transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(27, 67, 50, 0.3);
+  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
   border-color: var(--green-vibrant);
 }
 
@@ -386,8 +390,9 @@ h3{
   font-weight: 800;
   box-shadow: 
     0 0 30px var(--green-glow),
-    0 10px 25px rgba(27, 67, 50, 0.3),
+    0 10px 25px rgba(16, 185, 129, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  filter: drop-shadow(0 0 12px var(--green-glow));
 }
 
 .btn--primary::before{
@@ -397,11 +402,12 @@ h3{
 .btn--primary:hover{
   box-shadow: 
     0 0 50px var(--green-glow), 
-    0 15px 40px rgba(27, 67, 50, 0.5),
+    0 15px 40px rgba(16, 185, 129, 0.5),
     inset 0 1px 0 rgba(255, 255, 255, 0.3);
   transform: translateY(-4px) scale(1.02);
-  border-color: #2D6A4F;
-  background: #2D6A4F;
+  border-color: #0D9468;
+  background: #0D9468;
+  filter: drop-shadow(0 0 16px var(--green-glow));
 }
 
 .btn--ghost{
@@ -468,9 +474,9 @@ h3{
   height: 70vh;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 0 80px var(--green-glow), 0 25px 100px rgba(27, 67, 50, 0.4);
+  box-shadow: 0 0 80px var(--green-glow), 0 25px 100px rgba(16, 185, 129, 0.4);
   border: 2px solid;
-  border-image: linear-gradient(135deg, var(--green-vibrant), rgba(27, 67, 50, 0.3)) 1;
+  border-image: linear-gradient(135deg, var(--green-vibrant), rgba(16, 185, 129, 0.3)) 1;
 }
 
 .video-hero{
@@ -488,7 +494,7 @@ h3{
   left: 10%;
   width: 800px;
   height: 800px;
-  background: radial-gradient(circle, rgba(27, 67, 50, 0.15), transparent 70%);
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.15), transparent 70%);
   border-radius: 50%;
   filter: blur(120px);
   pointer-events: none;
@@ -502,7 +508,7 @@ h3{
   right: 15%;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(27, 67, 50, 0.12), transparent 70%);
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.12), transparent 70%);
   border-radius: 50%;
   filter: blur(100px);
   pointer-events: none;
@@ -559,11 +565,8 @@ h3{
   letter-spacing: -0.04em;
   line-height: 1.1;
   margin-bottom: 24px;
-  background: linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.9) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-shadow: 0 0 40px rgba(27, 67, 50, 0.5);
+  color: #FFFFFF;
+  filter: drop-shadow(0 0 12px var(--green-glow));
 }
 
 .hero-subtitle{
@@ -584,7 +587,7 @@ h3{
   margin-left: auto;
   margin-right: auto;
   border: 2px solid;
-  border-image: linear-gradient(135deg, var(--green-vibrant), rgba(27, 67, 50, 0.3)) 1;
+  border-image: linear-gradient(135deg, var(--green-vibrant), rgba(16, 185, 129, 0.3)) 1;
   background: rgba(10, 10, 10, 0.85);
   backdrop-filter: blur(25px) saturate(180%);
   -webkit-backdrop-filter: blur(25px) saturate(180%);
@@ -592,8 +595,8 @@ h3{
   padding: 48px;
   box-shadow: 
     0 0 60px var(--green-glow),
-    0 20px 80px rgba(27, 67, 50, 0.3),
-    inset 0 1px 0 rgba(27, 67, 50, 0.5);
+    0 20px 80px rgba(16, 185, 129, 0.3),
+    inset 0 1px 0 rgba(16, 185, 129, 0.5);
   transition: all 0.4s var(--ease);
 }
 
@@ -611,8 +614,8 @@ h3{
   transform: translateY(-8px);
   box-shadow: 
     0 0 80px var(--green-glow),
-    0 25px 100px rgba(27, 67, 50, 0.4),
-    inset 0 1px 0 rgba(27, 67, 50, 0.5);
+    0 25px 100px rgba(16, 185, 129, 0.4),
+    inset 0 1px 0 rgba(16, 185, 129, 0.5);
 }
 
 .what-we-do-card-hero h3{
@@ -661,6 +664,49 @@ h3{
   padding-left: 10px;
 }
 
+/* Mute/Unmute Button - Floating Glassmorphic */
+.mute-button{
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 100;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid var(--glass-border);
+  background: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s var(--ease);
+  box-shadow: 
+    0 0 30px var(--green-glow),
+    0 10px 30px rgba(16, 185, 129, 0.2);
+}
+
+.mute-button:hover{
+  transform: scale(1.1);
+  border-color: var(--green-vibrant);
+  box-shadow: 
+    0 0 40px var(--green-glow),
+    0 15px 40px rgba(16, 185, 129, 0.3);
+}
+
+.mute-button svg{
+  width: 24px;
+  height: 24px;
+  fill: var(--green-vibrant);
+  filter: drop-shadow(0 0 8px var(--green-glow));
+}
+
+.mute-button.hidden{
+  opacity: 0;
+  pointer-events: none;
+}
+
 @media (max-width: 900px){
   .video-hero-content h1{
     font-size: clamp(2.5rem, 8vw, 3.5rem);
@@ -679,6 +725,18 @@ h3{
   .video-hero-wrapper.shrink{
     width: 95%;
     height: 50vh;
+  }
+  
+  .mute-button{
+    bottom: 20px;
+    right: 20px;
+    width: 48px;
+    height: 48px;
+  }
+  
+  .mute-button svg{
+    width: 20px;
+    height: 20px;
   }
 }
 
@@ -712,12 +770,12 @@ h3{
 .panel:hover{
   transform: translateY(-5px);
   border: 2px solid;
-  border-image: linear-gradient(135deg, var(--green-vibrant), rgba(27, 67, 50, 0.3)) 1;
+  border-image: linear-gradient(135deg, var(--green-vibrant), rgba(16, 185, 129, 0.3)) 1;
   box-shadow: 
     0 0 40px var(--green-glow),
-    0 20px 60px rgba(27, 67, 50, 0.3),
-    inset 0 1px 0 rgba(27, 67, 50, 0.3);
-  background: rgba(27, 67, 50, 0.08);
+    0 20px 60px rgba(16, 185, 129, 0.3),
+    inset 0 1px 0 rgba(16, 185, 129, 0.3);
+  background: var(--green-hover-tint);
 }
 
 .panel:hover::before{
@@ -745,7 +803,7 @@ h3{
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(27, 67, 50, 0.15), transparent);
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), transparent);
   opacity: 0;
   transition: opacity 0.4s var(--ease);
 }
@@ -753,12 +811,12 @@ h3{
 .card:hover{
   transform: translateY(-8px) scale(1.02);
   border: 2px solid;
-  border-image: linear-gradient(135deg, var(--green-vibrant), rgba(27, 67, 50, 0.3)) 1;
+  border-image: linear-gradient(135deg, var(--green-vibrant), rgba(16, 185, 129, 0.3)) 1;
   box-shadow: 
     0 0 50px var(--green-glow),
-    0 20px 60px rgba(27, 67, 50, 0.4),
-    inset 0 1px 0 rgba(27, 67, 50, 0.3);
-  background: rgba(27, 67, 50, 0.08);
+    0 20px 60px rgba(16, 185, 129, 0.4),
+    inset 0 1px 0 rgba(16, 185, 129, 0.3);
+  background: var(--green-hover-tint);
 }
 
 .card:hover::after{
@@ -858,12 +916,12 @@ h3{
 .product-card:hover{
   transform: translateY(-10px) scale(1.03);
   border: 2px solid;
-  border-image: linear-gradient(135deg, var(--green-vibrant), rgba(27, 67, 50, 0.3)) 1;
+  border-image: linear-gradient(135deg, var(--green-vibrant), rgba(16, 185, 129, 0.3)) 1;
   box-shadow: 
     0 0 60px var(--green-glow),
-    0 25px 70px rgba(27, 67, 50, 0.4),
-    inset 0 1px 0 rgba(27, 67, 50, 0.3);
-  background: rgba(27, 67, 50, 0.08);
+    0 25px 70px rgba(16, 185, 129, 0.4),
+    inset 0 1px 0 rgba(16, 185, 129, 0.3);
+  background: var(--green-hover-tint);
 }
 
 .product-card-image{
@@ -968,19 +1026,19 @@ h3{
   border-radius: 20px;
   overflow: hidden;
   border: 2px solid;
-  border-image: linear-gradient(135deg, var(--green-vibrant), rgba(27, 67, 50, 0.3)) 1;
+  border-image: linear-gradient(135deg, var(--green-vibrant), rgba(16, 185, 129, 0.3)) 1;
   box-shadow: 
     0 0 60px var(--green-glow), 
-    0 20px 80px rgba(27, 67, 50, 0.3),
-    inset 0 1px 0 rgba(27, 67, 50, 0.3);
+    0 20px 80px rgba(16, 185, 129, 0.3),
+    inset 0 1px 0 rgba(16, 185, 129, 0.3);
   transition: all 0.4s var(--ease);
 }
 
 .video-container:hover{
   box-shadow: 
     0 0 80px var(--green-glow), 
-    0 25px 100px rgba(27, 67, 50, 0.4),
-    inset 0 1px 0 rgba(27, 67, 50, 0.3);
+    0 25px 100px rgba(16, 185, 129, 0.4),
+    inset 0 1px 0 rgba(16, 185, 129, 0.3);
   transform: scale(1.01);
 }
 
@@ -993,7 +1051,7 @@ h3{
 /* What We Do Card - Elegant Glassmorphic (For other pages if used) */
 .what-we-do-card{
   border: 2px solid;
-  border-image: linear-gradient(135deg, var(--green-vibrant), rgba(27, 67, 50, 0.3)) 1;
+  border-image: linear-gradient(135deg, var(--green-vibrant), rgba(16, 185, 129, 0.3)) 1;
   background: var(--glass-bg);
   backdrop-filter: blur(15px) saturate(180%);
   -webkit-backdrop-filter: blur(15px) saturate(180%);
@@ -1005,7 +1063,7 @@ h3{
   max-width: 600px;
   box-shadow: 
     0 0 40px var(--green-glow),
-    0 15px 50px rgba(27, 67, 50, 0.2);
+    0 15px 50px rgba(16, 185, 129, 0.2);
 }
 
 .what-we-do-card::before{

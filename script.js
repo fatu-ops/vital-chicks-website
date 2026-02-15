@@ -39,6 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 4) Video Hero Shrink Effect on Scroll
   const videoHeroWrapper = document.querySelector(".video-hero-wrapper");
+  const muteButton = document.getElementById("muteButton");
   
   if (videoHeroWrapper) {
     window.addEventListener("scroll", () => {
@@ -47,8 +48,34 @@ document.addEventListener("DOMContentLoaded", () => {
       
       if (scrollY > triggerPoint) {
         videoHeroWrapper.classList.add("shrink");
+        if (muteButton) muteButton.classList.add("hidden");
       } else {
         videoHeroWrapper.classList.remove("shrink");
+        if (muteButton) muteButton.classList.remove("hidden");
+      }
+    });
+  }
+
+  // 5) Mute/Unmute Button
+  const heroVideo = document.getElementById("heroVideo");
+  const muteIcon = document.getElementById("muteIcon");
+  const unmuteIcon = document.getElementById("unmuteIcon");
+
+  if (heroVideo && muteButton) {
+    // Start muted due to autoplay policies
+    heroVideo.muted = true;
+    muteIcon.style.display = "none";
+    unmuteIcon.style.display = "block";
+
+    muteButton.addEventListener("click", () => {
+      if (heroVideo.muted) {
+        heroVideo.muted = false;
+        muteIcon.style.display = "block";
+        unmuteIcon.style.display = "none";
+      } else {
+        heroVideo.muted = true;
+        muteIcon.style.display = "none";
+        unmuteIcon.style.display = "block";
       }
     });
   }
