@@ -37,21 +37,17 @@ document.addEventListener("DOMContentLoaded", () => {
     lastScroll = currentScroll;
   });
 
-  // 4) Video Hero Shrink Effect on Scroll
-  const videoHeroWrapper = document.querySelector(".video-hero-wrapper");
-  const muteButton = document.getElementById("muteButton");
+  // 4) Video Overlay Slide-Away Effect on Scroll
+  const videoOverlay = document.getElementById("videoOverlay");
   
-  if (videoHeroWrapper) {
+  if (videoOverlay) {
     window.addEventListener("scroll", () => {
       const scrollY = window.pageYOffset;
-      const triggerPoint = window.innerHeight * 0.3; // Trigger at 30% scroll
       
-      if (scrollY > triggerPoint) {
-        videoHeroWrapper.classList.add("shrink");
-        if (muteButton) muteButton.classList.add("hidden");
+      if (scrollY > 50) {
+        videoOverlay.classList.add("slide-away");
       } else {
-        videoHeroWrapper.classList.remove("shrink");
-        if (muteButton) muteButton.classList.remove("hidden");
+        videoOverlay.classList.remove("slide-away");
       }
     });
   }
