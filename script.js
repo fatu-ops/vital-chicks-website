@@ -36,5 +36,44 @@ document.addEventListener("DOMContentLoaded", () => {
     
     lastScroll = currentScroll;
   });
+
+  // 4) Video Overlay Slide-Away Effect on Scroll
+  const videoOverlay = document.getElementById("videoOverlay");
+  
+  if (videoOverlay) {
+    window.addEventListener("scroll", () => {
+      const scrollY = window.pageYOffset;
+      
+      if (scrollY > 50) {
+        videoOverlay.classList.add("slide-away");
+      } else {
+        videoOverlay.classList.remove("slide-away");
+      }
+    });
+  }
+
+  // 5) Mute/Unmute Button
+  const heroVideo = document.getElementById("heroVideo");
+  const muteIcon = document.getElementById("muteIcon");
+  const unmuteIcon = document.getElementById("unmuteIcon");
+
+  if (heroVideo && muteButton) {
+    // Start muted due to autoplay policies
+    heroVideo.muted = true;
+    muteIcon.style.display = "none";
+    unmuteIcon.style.display = "block";
+
+    muteButton.addEventListener("click", () => {
+      if (heroVideo.muted) {
+        heroVideo.muted = false;
+        muteIcon.style.display = "block";
+        unmuteIcon.style.display = "none";
+      } else {
+        heroVideo.muted = true;
+        muteIcon.style.display = "none";
+        unmuteIcon.style.display = "block";
+      }
+    });
+  }
 });
 
